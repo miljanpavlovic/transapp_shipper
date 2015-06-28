@@ -1,21 +1,35 @@
 package com.transapp.shipper.widgets;
 
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.media.Image;
 import android.nfc.Tag;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.AttributeSet;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.transapp.shipper.R;
+import com.transapp.shipper.commons.Constants;
+import com.transapp.shipper.utils.IOUtil;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.Calendar;
 
 
 /**
@@ -25,7 +39,6 @@ public class SignatureView extends View {
 
     public static final String TAG = "SignatureView";
 
-    LinearLayout mContent;
     private Bitmap mBitmap;
 
     private static final float STROKE_WIDTH = 5f;
@@ -36,6 +49,8 @@ public class SignatureView extends View {
     private float lastTouchX;
     private float lastTouchY;
     private final RectF dirtyRect = new RectF();
+
+
 
     public SignatureView(Context context) {
         super(context);
@@ -51,32 +66,40 @@ public class SignatureView extends View {
         paint.setStrokeWidth(STROKE_WIDTH);
     }
 
-    public void save(View v) {
-        Log.d(TAG, "Width: " + v.getWidth());
-        Log.v(TAG, "Height: " + v.getHeight());
+    // i will left this function commented for now, and will see later will i use it somewhere
+//    public String getSignaturePath(Context context) {
+//        try {
+//            String url = MediaStore.Images.Media.insertImage(context.getContentResolver(), mBitmap, "title", null);
+//            Log.d(TAG, "getSignaturePath insertImage url: " + url);
+//            return url;
+//
+//        } catch (Exception ex) {
+//            Log.d(TAG, "getSignaturePath exception occure");
+//            return ex.getMessage();
+//        }
+//    }
+
+
+    public File save(Context context){
         if(mBitmap == null) {
-            mBitmap =  Bitmap.createBitmap(mContent.getWidth(), mContent.getHeight(), Bitmap.Config.RGB_565);;
+            mBitmap =  Bitmap.createBitmap(this.getWidth(), this.getHeight(), Bitmap.Config.RGB_565);;
         }
         Canvas canvas = new Canvas(mBitmap);
         try {
-           // FileOutputStream mFileOutStream = new FileOutputStream(mypath);
-
-//            v.draw(canvas);
-//            mBitmap.compress(Bitmap.CompressFormat.PNG, 90, mFileOutStream);
-//            mFileOutStream.flush();
-//            mFileOutStream.close();
-//            String url = MediaStore.Images.Media.insertImage(getContentResolver(), mBitmap, "title", null);
-//            Log.v("log_tag","url: " + url);
-//            //In case you want to delete the file
-//            //boolean deleted = mypath.delete();
-//            //Log.v("log_tag","deleted: " + mypath.toString() + deleted);
-//            //If you want to convert the image to string use base64 converter
-
+            File signaturePath = new File(IOUtil.getSignatureDir(context), IOUtil.getSignatureName());
+            FileOutputStream mFileOutStream = new FileOutputStream(signaturePath);
+            draw(canvas);
+            mBitmap.compress(Bitmap.CompressFormat.PNG, 90, mFileOutStream);
+            mFileOutStream.flush();
+            mFileOutStream.close();
+            return signaturePath;
         }
         catch(Exception e) {
             Log.d(TAG, e.toString());
+            return null;
         }
     }
+
 
     public void clear() {
         path.reset();
@@ -153,4 +176,6 @@ public class SignatureView extends View {
         dirtyRect.top = Math.min(lastTouchY, eventY);
         dirtyRect.bottom = Math.max(lastTouchY, eventY);
     }
+
+
 }
