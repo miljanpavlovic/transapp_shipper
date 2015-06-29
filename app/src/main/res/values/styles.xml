@@ -3,15 +3,15 @@
     <!-- Base application theme. -->
     <style name="Theme.Shipper" parent="Theme.AppCompat.NoActionBar">
         <!-- customize the color palette -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorDark</item>
+        <item name="colorPrimary">@color/app_background_gray</item>
+        <item name="colorPrimaryDark">@color/app_dark_gray</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowNoTitle">true</item>
 
         <!-- Active thumb color & Active track color(30% transparency) -->
         <item name="colorControlActivated">@color/colorAccent</item>
         <!-- Inactive track color(30% transparency) -->
-        <item name="android:colorForeground">@color/colorPrimary</item>
+        <item name="android:colorForeground">@color/app_background_gray</item>
 
     </style>
 

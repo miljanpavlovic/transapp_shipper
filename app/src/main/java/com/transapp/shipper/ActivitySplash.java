@@ -18,8 +18,8 @@ public class ActivitySplash extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(2000);
-                    Intent mainActivity = new Intent(ActivitySplash.this, ActivityPrototyping.class);
+                    Thread.sleep(1500);
+                    Intent mainActivity = new Intent(ActivitySplash.this, ActivityLogin.class);
                     startActivity(mainActivity);
                     finish();
 

@@ -7,4 +7,24 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <!-- splash -->
+    <string name="splashTitle">TRANSAPP</string>
+
+    <!--login and registration form strings-->
+    <string name="lblLoginEmail">Email Address</string>
+    <string name="lblPassword">Password</string>
+    <string name="btnLoginLabel">Login</string>
+    <string name="lblFirstName">First Name</string>
+    <string name="lblLastName">Last Name</string>
+    <string name="lblCompanyName">Company Name</string>
+    <string name="lblPhone">Phone</string>
+    <string name="lblEmail">Email</string>
+    <string name="btnSignUpLabel">Sign up</string>
+
+    <!-- popups -->
+    <string name="msgAccountCreated">Congratulations! Your Account has been created. We are reviewing your application. We will e-mail you within 24 hours. Meanwhile please get to know Transapp.</string>
+    <string name="title_activity_activity_dashboard">ActivityDashboard</string>
+    <string name="title_activity_activity_login">ActivityLogin</string>
+    <string name="title_activity_activity_register">ActivityRegister</string>
 </resources>

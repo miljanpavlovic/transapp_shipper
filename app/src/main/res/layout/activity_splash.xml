@@ -2,36 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:background="@color/app_background_gray"
+    android:gravity="center"
     tools:context=".ActivitySplash">
 
-    <FrameLayout
-        android:id="@+id/content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:paddingBottom="140dp">
-
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminateDrawable="@drawable/progress_bar" />
-
-            <TextView
-                android:id="@+id/txt_progress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-
-        </RelativeLayout>
-    </FrameLayout>
-
+<com.transapp.shipper.widgets.TypeFacedTextView
+    android:id="@+id/txtSplashTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/splashTitle"
+    android:textColor="@color/app_dark_gray"
+    android:textStyle="bold"
+    android:textSize="@dimen/splashTitleTextSize"/>
 </RelativeLayout>

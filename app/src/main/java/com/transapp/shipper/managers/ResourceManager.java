@@ -3,8 +3,10 @@ package com.transapp.shipper.managers;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
@@ -54,14 +56,27 @@ public class ResourceManager {
         }
     }
 
+    public <T> void addToRequestQueue(Request<T> request, String tag){
+        request.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
+        getRequestQueue().add(request);
+    }
+
+    public <T> void addToRequestQueue(Request<T> request){
+        request.setTag(TAG);
+        getRequestQueue().add(request);
+    }
+
+    public void cancelPendingRequests(Object tag){
+        if(mRequestQueue!=null){
+            mRequestQueue.cancelAll(tag);
+        }
+    }
+
 
 
     public String getApplicationVersion() {
         return applicationVersion;
     }
-
-
-
 
 
 }

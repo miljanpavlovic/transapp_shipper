@@ -4,8 +4,12 @@
     <color name="black">#000000</color>
     <color name="black_overlay">#66000000</color>
 
-    <color name="colorPrimary">#e5e7e6</color>
-    <color name="colorDark">#4a4a4a</color>
+    <color name="app_background_gray">#e5e7e6</color>
+    <color name="app_dark_gray">#4a4a4a</color>
     <color name="colorAccent">#f6a200</color>
+
+    <!-- login and registration colors-->
+    <color name="labelsGray">#c5c8ca</color>
+    <color name="labelsHint">#999999</color>
 
 </resources>
