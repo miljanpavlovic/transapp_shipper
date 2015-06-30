@@ -72,8 +72,6 @@ public class ResourceManager {
         }
     }
 
-
-
     public String getApplicationVersion() {
         return applicationVersion;
     }

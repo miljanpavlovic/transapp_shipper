@@ -4,4 +4,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="splashTitleTextSize">36sp</dimen>
+
+    <!-- regiter user screen text sizes -->
+    <dimen name="register_lables_text_size">14sp</dimen>
+
 </resources>
